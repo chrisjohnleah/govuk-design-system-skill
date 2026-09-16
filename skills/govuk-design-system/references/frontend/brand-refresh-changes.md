@@ -1,0 +1,19 @@
+# Updating your service to use the new brand
+
+# Updating your service to use the new brand
+
+In June 2025, GOV.UK started to refresh the brand across its products and services.
+
+## If you’re using GOV.UK Frontend v6 or later
+
+You do not need to take any action. Your service is using the refreshed GOV.UK branding.
+
+## If you’re using GOV.UK Frontend v5 or earlier
+
+We recommend upgrading to the latest version of GOV.UK Frontend as soon as possible to get the most up to date iteration of the GOV.UK brand.
+
+Read our [guidance on staying up to date with changes on GOV.UK Frontend](https://frontend.design-system.service.gov.uk/staying-up-to-date/) for ways and benefits of knowing when we release new versions of GOV.UK Frontend.
+
+### If you cannot upgrade or are not using GOV.UK Frontend
+
+Read the [GOV.UK Frontend v5 guidance on the brand refresh](https://design-system.service.gov.uk/v5/brand-refresh-changes/).

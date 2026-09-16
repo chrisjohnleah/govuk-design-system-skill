@@ -1,0 +1,112 @@
+# Install with Node.js package manager (npm)
+
+# Install with Node.js package manager (npm)
+
+## Requirements
+
+1. [Install Node.js](https://nodejs.org/en/).
+
+    GOV.UK Frontend requires Node.js version 12.17.0 or later to support ECMAScript (ES) modules. Where possible, we recommend you install the latest Long Term Support (LTS) version.
+
+2. `cd` to the root of your project and check if you have a [package.json file](https://docs.npmjs.com/cli/v11/configuring-npm/package-json). If you do not have the file, create it by running:
+
+    ```
+    npm init
+    ```
+
+3. Install [Dart Sass](https://www.npmjs.com/package/sass) - version 1.79.0 or higher.
+
+    You might see deprecation warnings when compiling your Sass. If required, you can [silence deprecation warnings caused by dependencies](https://design-system.service.gov.uk/include-css/#silence-deprecation-warnings-from-dependencies-in-dart-sass).
+
+    Do not use either LibSass or Ruby Sass as they are no longer supported by the Sass developers or GOV.UK Frontend. Projects using these compilers should [migrate to Dart Sass](https://sass-lang.com/blog/libsass-is-deprecated/#how-do-i-migrate) before updating to GOV.UK Frontend v6.0.
+
+You can also [install Nunjucks v3.0.0 or later](https://www.npmjs.com/package/nunjucks) if you want to [use GOV.UK Frontend’s Nunjucks macros](https://design-system.service.gov.uk/use-nunjucks/).
+
+## Install GOV.UK Frontend
+
+Run:
+
+```
+npm install govuk-frontend --save
+```
+
+When the installation finishes, the `govuk-frontend` package will be in your `node_modules` folder.
+
+## Add HTML for a component
+
+Add the HTML for a component to your application. We recommend the accordion component as this makes it easy to spot if JavaScript is not working.
+
+Go to the [example accordion component](https://design-system.service.gov.uk/components/accordion/#accordion-example) on the GOV.UK Design System website, then copy the HTML.
+
+Paste the HTML into a page or template in your application.
+
+## Get the CSS working
+
+1. Copy the `/node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css` file into your application.
+
+2. Add your CSS file to your page layout if you need to. For example:
+
+    ```scss
+    <head>
+      <!-- // ... -->
+      <link rel="stylesheet" href="<YOUR-STYLESHEETS-FOLDER>/govuk-frontend.min.css">
+      <!-- // ... -->
+    </head>
+    ```
+
+3. Run your application and check that the accordion displays correctly.
+
+The accordion will use a generic font until you get the font and images working, and will not be interactive until you get the JavaScript working.
+
+There are also different ways you can [include GOV.UK Frontend’s CSS](https://design-system.service.gov.uk/include-css/), including into your project’s main Sass file:
+
+```scss
+@use "node_modules/govuk-frontend/dist/govuk" as *;
+```
+
+## Get the font and images working
+
+Your component will not use the correct font or images until you’ve added GOV.UK Frontend’s assets to your application.
+
+1. Copy the following 3 items:
+
+  - `/node_modules/govuk-frontend/dist/govuk/assets/images` folder to `<YOUR-APP>/assets/images`
+  - `/node_modules/govuk-frontend/dist/govuk/assets/fonts` folder to `<YOUR-APP>/assets/fonts`
+  - `/node_modules/govuk-frontend/dist/govuk/assets/manifest.json` file to `<YOUR-APP>/assets`
+
+2. Run your application, then use [the Fonts tab in Firefox Page Inspector](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/edit_fonts/index.html#The_Fonts_tab) to check the accordion is using the GDS Transport font.
+
+You can also [configure how GOV.UK Frontend locates its font and image assets](https://design-system.service.gov.uk/import-font-and-images-assets/) to suit your application architecture.
+
+## Get the JavaScript working
+
+1. Add the following to the top of the `<body class="govuk-template__body">` section of your page template:
+
+    ```scss
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    ```
+2. Copy the `/node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js` file into your application.
+
+3. Import the file before the closing `</body>` tag of your page template, then run the `initAll` function to initialise all the components. For example:
+
+    ```html
+    <body class="govuk-template__body">
+      <!-- // ... -->
+      <script type="module" src="<YOUR-JAVASCRIPTS-FOLDER>/govuk-frontend.min.js"></script>
+      <script type="module">
+        import { initAll } from '<YOUR-JAVASCRIPTS-FOLDER>/govuk-frontend.min.js'
+        initAll()
+      </script>
+    </body>
+    ```
+
+4. Run your application and check it works the same way as the Design System accordion example, by selecting the buttons and checking the accordion shows and hides sections.
+
+In your live application, we recommend:
+
+- [using an automated task or your build pipeline](https://frontend.design-system.service.gov.uk/import-javascript/) instead of copying the files manually
+- importing only the components your application uses and [using createAll to initialise](https://design-system.service.gov.uk/import-javascript/#import-individual-components) all their instances on the page
+
+Make sure you import all the components used throughout your application or some components will not work correctly for disabled users who use assistive technologies.
+
+Once your testing is complete, you can use the full code for page layouts and other components from the [Design System website](https://design-system.service.gov.uk/).

@@ -1,0 +1,815 @@
+# Page template
+
+Template combines the boilerplate markup and components needed for a basic GOV.UK page
+
+Use this template to keep your pages consistent with the rest of GOV.UK.
+
+This page template combines the boilerplate markup and [components](https://design-system.service.gov.uk/components/) needed for a basic GOV.UK page. It includes:
+
+- JavaScript that adds a `.govuk-frontend-supported` class, which is required by components with JavaScript behaviour
+- the [Skip link component](https://design-system.service.gov.uk/components/skip-link/), [Header component](https://design-system.service.gov.uk/components/header/) and [Footer component](https://design-system.service.gov.uk/components/footer/)
+- the favicon, and other related theme icons
+
+In the examples provided, we show both HTML and [Nunjucks](https://frontend.design-system.service.gov.uk/use-nunjucks/).
+
+You can use the HTML examples if you are not able to use Nunjucks. If you use HTML you’ll need to update it manually when new versions are released.
+
+If you're using Nunjucks you can get this page template by installing GOV.UK Frontend.
+You’ll get updates to the page template when we update GOV.UK Frontend.
+
+## Default
+
+This example shows the minimum required for a GOV.UK page.
+
+**Example: Default**
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>GOV.UK - The best place to find government services and information</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+  <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+      <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+      <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+      <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#1d70b8">
+      <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+      <link rel="manifest" href="/assets/manifest.json">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+        <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+        <header class="govuk-template__header">
+<div class="govuk-header">
+  <div class="govuk-header__container govuk-width-container">
+    <div class="govuk-header__logo">
+      <a href="//gov.uk" class="govuk-header__homepage-link">
+          <svg
+            focusable="false"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 324 60"
+            height="30"
+            width="162"
+            fill="currentcolor" class="govuk-header__logotype" aria-label="GOV.UK"
+          ><title>GOV.UK</title>
+            <g>
+                <circle cx="20" cy="17.6" r="3.7"/>
+                <circle cx="10.2" cy="23.5" r="3.7"/>
+                <circle cx="3.7" cy="33.2" r="3.7"/>
+                <circle cx="31.7" cy="30.6" r="3.7"/>
+                <circle cx="43.3" cy="17.6" r="3.7"/>
+                <circle cx="53.2" cy="23.5" r="3.7"/>
+                <circle cx="59.7" cy="33.2" r="3.7"/>
+                <circle cx="31.7" cy="30.6" r="3.7"/>
+                <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"/>
+              </g>
+              <circle class="govuk-logo-dot" cx="226" cy="36" r="7.3"/>
+              <path d="M93.94 41.25c.4 1.81 1.2 3.21 2.21 4.62 1 1.4 2.21 2.41 3.61 3.21s3.21 1.2 5.22 1.2 3.61-.4 4.82-1c1.4-.6 2.41-1.4 3.21-2.41.8-1 1.4-2.01 1.61-3.01s.4-2.01.4-3.01v.14h-10.86v-7.02h20.07v24.08h-8.03v-5.56c-.6.8-1.38 1.61-2.19 2.41-.8.8-1.81 1.2-2.81 1.81-1 .4-2.21.8-3.41 1.2s-2.41.4-3.81.4a18.56 18.56 0 0 1-14.65-6.63c-1.6-2.01-3.01-4.41-3.81-7.02s-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83a20.45 20.45 0 0 1 19.46-13.65c3.21 0 4.01.2 5.82.8 1.81.4 3.61 1.2 5.02 2.01 1.61.8 2.81 2.01 4.01 3.21s2.21 2.61 2.81 4.21l-7.63 4.41c-.4-1-1-1.81-1.61-2.61-.6-.8-1.4-1.4-2.21-2.01-.8-.6-1.81-1-2.81-1.4-1-.4-2.21-.4-3.61-.4-2.01 0-3.81.4-5.22 1.2-1.4.8-2.61 1.81-3.61 3.21s-1.61 2.81-2.21 4.62c-.4 1.81-.6 3.71-.6 5.42s.8 5.22.8 5.22Zm57.8-27.9c3.21 0 6.22.6 8.63 1.81 2.41 1.2 4.82 2.81 6.62 4.82S170.2 24.39 171 27s1.4 5.62 1.4 8.83-.4 6.02-1.4 8.83-2.41 5.02-4.01 7.02-4.01 3.61-6.62 4.82-5.42 1.81-8.63 1.81-6.22-.6-8.63-1.81-4.82-2.81-6.42-4.82-3.21-4.41-4.01-7.02-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83 2.41-5.02 4.01-7.02 4.01-3.61 6.42-4.82 5.42-1.81 8.63-1.81Zm0 36.73c1.81 0 3.61-.4 5.02-1s2.61-1.81 3.61-3.01 1.81-2.81 2.21-4.41c.4-1.81.8-3.61.8-5.62 0-2.21-.2-4.21-.8-6.02s-1.2-3.21-2.21-4.62c-1-1.2-2.21-2.21-3.61-3.01s-3.21-1-5.02-1-3.61.4-5.02 1c-1.4.8-2.61 1.81-3.61 3.01s-1.81 2.81-2.21 4.62c-.4 1.81-.8 3.61-.8 5.62 0 2.41.2 4.21.8 6.02.4 1.81 1.2 3.21 2.21 4.41s2.21 2.21 3.61 3.01c1.4.8 3.21 1 5.02 1Zm36.32 7.96-12.24-44.15h9.83l8.43 32.77h.4l8.23-32.77h9.83L200.3 58.04h-12.24Zm74.14-7.96c2.18 0 3.51-.6 3.51-.6 1.2-.6 2.01-1 2.81-1.81s1.4-1.81 1.81-2.81a13 13 0 0 0 .8-4.01V13.9h8.63v28.15c0 2.41-.4 4.62-1.4 6.62-.8 2.01-2.21 3.61-3.61 5.02s-3.41 2.41-5.62 3.21-4.62 1.2-7.02 1.2-5.02-.4-7.02-1.2c-2.21-.8-4.01-1.81-5.62-3.21s-2.81-3.01-3.61-5.02-1.4-4.21-1.4-6.62V13.9h8.63v26.95c0 1.61.2 3.01.8 4.01.4 1.2 1.2 2.21 2.01 2.81.8.8 1.81 1.4 2.81 1.81 0 0 1.34.6 3.51.6Zm34.22-36.18v18.92l15.65-18.92h10.82l-15.03 17.32 16.03 26.83h-10.21l-11.44-20.21-5.62 6.22v13.99h-8.83V13.9"/>
+          </svg>
+      </a>
+    </div>
+  </div>
+</div>
+        </header>
+      <div class="govuk-width-container">
+        <main class="govuk-main-wrapper" id="main-content">
+  <h1 class="govuk-heading-xl">Default page template</h1>
+        </main>
+      </div>
+        <footer class="govuk-template__footer">
+          <div class="govuk-footer">
+  <div class="govuk-width-container">
+  <svg
+    focusable="false"
+    role="presentation"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 64 60"
+    height="30"
+    width="32"
+    fill="currentcolor" class="govuk-footer__crown"
+  >
+    <g>
+        <circle cx="20" cy="17.6" r="3.7"/>
+        <circle cx="10.2" cy="23.5" r="3.7"/>
+        <circle cx="3.7" cy="33.2" r="3.7"/>
+        <circle cx="31.7" cy="30.6" r="3.7"/>
+        <circle cx="43.3" cy="17.6" r="3.7"/>
+        <circle cx="53.2" cy="23.5" r="3.7"/>
+        <circle cx="59.7" cy="33.2" r="3.7"/>
+        <circle cx="31.7" cy="30.6" r="3.7"/>
+        <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"/>
+      </g>
+  </svg>
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            class="govuk-footer__licence-logo"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 483.2 195.7"
+            height="17"
+            width="41"
+          >
+            <path
+              fill="currentColor"
+              d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+            />
+          </svg>
+          <span class="govuk-footer__licence-description">
+            All content is available under the
+            <a
+              class="govuk-footer__link"
+              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+              rel="license"
+            >Open Government Licence v3.0</a>, except where otherwise stated
+          </span>
+      </div>
+      <div class="govuk-footer__meta-item">
+        <a
+          class="govuk-footer__link govuk-footer__copyright-logo"
+          href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+        >
+          © Crown copyright
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+        </footer>
+  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+  <script type="module">
+    import { initAll } from '/javascripts/govuk-frontend.min.js'
+    initAll()
+  </script>
+  </body>
+</html>
+```
+
+## Customised page template
+
+You can customise the page template, for example, by:
+
+- adding a service name and navigation
+- including a [Back link component](https://design-system.service.gov.uk/components/back-link/) or [Phase banner component](https://design-system.service.gov.uk/components/phase-banner/)
+
+**Example: Customised**
+
+Nunjucks:
+
+```njk
+{# Example that changes every setting in the template #}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+{% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% set htmlClasses = "app-html-class" %}
+{% set htmlLang = "en" %}
+{% set assetUrl = "YOUR-DOMAIN" %}
+{% set themeColor = "blue" %}
+{% set bodyClasses = "app-body-class" %}
+{% set bodyAttributes = {
+  "data-test": "My value",
+  "data-other": "report:details"
+} %}
+{% set containerClasses = "app-width-container" %}
+{% set mainClasses = "app-main-class" %}
+
+GOV.UK - Customised page template
+
+  {{ super() }}
+
+  <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+
+  <form action="/form-handler" method="post" novalidate>
+    {{ govukCookieBanner({
+      ariaLabel: "Cookies on [name of service]",
+      messages: [
+        {
+          headingText: "Cookies on [name of service]",
+          html: '<p class="govuk-body">We use some essential cookies to make this service work.</p>
+            <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>',
+          actions: [
+            {
+              text: "Accept analytics cookies",
+              type: "submit",
+              name: "cookies[analytics]",
+              value: "yes"
+            },
+            {
+              text: "Reject analytics cookies",
+              type: "submit",
+              name: "cookies[analytics]",
+              value: "no"
+            },
+            {
+              text: "View cookies",
+              href: "#"
+            }
+          ]
+        }
+      ]
+    }) }}
+  </form>
+
+  {{ govukSkipLink({
+    href: "#main-content",
+    text: "Skip to main content"
+  }) }}
+
+  {{ govukServiceNavigation({
+    serviceName: "Service name",
+    serviceUrl: "#",
+    navigation: [
+      {
+        href: "#",
+        text: "Navigation item 1",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Navigation item 2"
+      },
+      {
+        href: "#",
+        text: "Navigation item 3"
+      }
+    ]
+  }) }}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Alpha"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    href: "#",
+    text: "Back"
+  }) }}
+
+  {{ super() }}
+
+  <h1 class="govuk-heading-xl">Customised page template</h1>
+
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: "#",
+          text: "Help"
+        },
+        {
+          href: "#",
+          text: "Cookies"
+        },
+        {
+          href: "#",
+          text: "Contact"
+        },
+        {
+          href: "#",
+          text: "Terms and conditions"
+        }
+      ]
+    }
+  }) }}
+
+  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+  <script type="module">
+    import { initAll } from '/javascripts/govuk-frontend.min.js'
+    initAll()
+  </script>
+```
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en" class="govuk-template app-html-class">
+  <head>
+    <meta charset="utf-8">
+    <title>GOV.UK - Customised page template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="blue">
+  <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+      <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+      <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+      <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="blue">
+      <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+      <link rel="manifest" href="/assets/manifest.json">
+    <meta property="og:image" content="YOUR-DOMAIN/images/govuk-opengraph-image.png">
+  </head>
+  <body class="govuk-template__body app-body-class"
+   data-test="My value" data-other="report:details">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+  <form action="/form-handler" method="post" novalidate>
+<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on [name of service]">
+  <div class="govuk-cookie-banner__message govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+          Cookies on [name of service]
+        </h2>
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">We use some essential cookies to make this service work.</p>
+                      <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-button-group">
+      <button type="submit" value="yes" name="cookies[analytics]" class="govuk-button" data-module="govuk-button">
+        Accept analytics cookies
+      </button>
+      <button type="submit" value="no" name="cookies[analytics]" class="govuk-button" data-module="govuk-button">
+        Reject analytics cookies
+      </button>
+      <a class="govuk-link" href="#">View cookies</a>
+    </div>
+  </div>
+</div>
+  </form>
+  <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+        <header class="govuk-template__header">
+<div class="govuk-header">
+  <div class="govuk-header__container govuk-width-container">
+    <div class="govuk-header__logo">
+      <a href="//gov.uk" class="govuk-header__homepage-link">
+          <svg
+            focusable="false"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 324 60"
+            height="30"
+            width="162"
+            fill="currentcolor" class="govuk-header__logotype" aria-label="GOV.UK"
+          ><title>GOV.UK</title>
+            <g>
+                <circle cx="20" cy="17.6" r="3.7"/>
+                <circle cx="10.2" cy="23.5" r="3.7"/>
+                <circle cx="3.7" cy="33.2" r="3.7"/>
+                <circle cx="31.7" cy="30.6" r="3.7"/>
+                <circle cx="43.3" cy="17.6" r="3.7"/>
+                <circle cx="53.2" cy="23.5" r="3.7"/>
+                <circle cx="59.7" cy="33.2" r="3.7"/>
+                <circle cx="31.7" cy="30.6" r="3.7"/>
+                <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"/>
+              </g>
+              <circle class="govuk-logo-dot" cx="226" cy="36" r="7.3"/>
+              <path d="M93.94 41.25c.4 1.81 1.2 3.21 2.21 4.62 1 1.4 2.21 2.41 3.61 3.21s3.21 1.2 5.22 1.2 3.61-.4 4.82-1c1.4-.6 2.41-1.4 3.21-2.41.8-1 1.4-2.01 1.61-3.01s.4-2.01.4-3.01v.14h-10.86v-7.02h20.07v24.08h-8.03v-5.56c-.6.8-1.38 1.61-2.19 2.41-.8.8-1.81 1.2-2.81 1.81-1 .4-2.21.8-3.41 1.2s-2.41.4-3.81.4a18.56 18.56 0 0 1-14.65-6.63c-1.6-2.01-3.01-4.41-3.81-7.02s-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83a20.45 20.45 0 0 1 19.46-13.65c3.21 0 4.01.2 5.82.8 1.81.4 3.61 1.2 5.02 2.01 1.61.8 2.81 2.01 4.01 3.21s2.21 2.61 2.81 4.21l-7.63 4.41c-.4-1-1-1.81-1.61-2.61-.6-.8-1.4-1.4-2.21-2.01-.8-.6-1.81-1-2.81-1.4-1-.4-2.21-.4-3.61-.4-2.01 0-3.81.4-5.22 1.2-1.4.8-2.61 1.81-3.61 3.21s-1.61 2.81-2.21 4.62c-.4 1.81-.6 3.71-.6 5.42s.8 5.22.8 5.22Zm57.8-27.9c3.21 0 6.22.6 8.63 1.81 2.41 1.2 4.82 2.81 6.62 4.82S170.2 24.39 171 27s1.4 5.62 1.4 8.83-.4 6.02-1.4 8.83-2.41 5.02-4.01 7.02-4.01 3.61-6.62 4.82-5.42 1.81-8.63 1.81-6.22-.6-8.63-1.81-4.82-2.81-6.42-4.82-3.21-4.41-4.01-7.02-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83 2.41-5.02 4.01-7.02 4.01-3.61 6.42-4.82 5.42-1.81 8.63-1.81Zm0 36.73c1.81 0 3.61-.4 5.02-1s2.61-1.81 3.61-3.01 1.81-2.81 2.21-4.41c.4-1.81.8-3.61.8-5.62 0-2.21-.2-4.21-.8-6.02s-1.2-3.21-2.21-4.62c-1-1.2-2.21-2.21-3.61-3.01s-3.21-1-5.02-1-3.61.4-5.02 1c-1.4.8-2.61 1.81-3.61 3.01s-1.81 2.81-2.21 4.62c-.4 1.81-.8 3.61-.8 5.62 0 2.41.2 4.21.8 6.02.4 1.81 1.2 3.21 2.21 4.41s2.21 2.21 3.61 3.01c1.4.8 3.21 1 5.02 1Zm36.32 7.96-12.24-44.15h9.83l8.43 32.77h.4l8.23-32.77h9.83L200.3 58.04h-12.24Zm74.14-7.96c2.18 0 3.51-.6 3.51-.6 1.2-.6 2.01-1 2.81-1.81s1.4-1.81 1.81-2.81a13 13 0 0 0 .8-4.01V13.9h8.63v28.15c0 2.41-.4 4.62-1.4 6.62-.8 2.01-2.21 3.61-3.61 5.02s-3.41 2.41-5.62 3.21-4.62 1.2-7.02 1.2-5.02-.4-7.02-1.2c-2.21-.8-4.01-1.81-5.62-3.21s-2.81-3.01-3.61-5.02-1.4-4.21-1.4-6.62V13.9h8.63v26.95c0 1.61.2 3.01.8 4.01.4 1.2 1.2 2.21 2.01 2.81.8.8 1.81 1.4 2.81 1.81 0 0 1.34.6 3.51.6Zm34.22-36.18v18.92l15.65-18.92h10.82l-15.03 17.32 16.03 26.83h-10.21l-11.44-20.21-5.62 6.22v13.99h-8.83V13.9"/>
+          </svg>
+      </a>
+    </div>
+  </div>
+</div>
+  <section aria-label="Service information" 
+class="govuk-service-navigation"
+data-module="govuk-service-navigation"
+>
+  <div class="govuk-width-container">
+    <div class="govuk-service-navigation__container">
+        <span class="govuk-service-navigation__service-name">
+            <a href="#" class="govuk-service-navigation__link">
+              Service name
+            </a>
+        </span>
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+            Menu
+          </button>
+          <ul class="govuk-service-navigation__list" id="navigation" >
+              <li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+                  <a class="govuk-service-navigation__link" href="#" aria-current="true">
+                  <strong class="govuk-service-navigation__active-fallback">Navigation item 1</strong>
+                  </a>
+              </li>
+              <li class="govuk-service-navigation__item">
+                  <a class="govuk-service-navigation__link" href="#">
+                Navigation item 2
+                  </a>
+              </li>
+              <li class="govuk-service-navigation__item">
+                  <a class="govuk-service-navigation__link" href="#">
+                Navigation item 3
+                  </a>
+              </li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+  </section>
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Alpha
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+        </header>
+      <div class="govuk-width-container app-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+        <main class="govuk-main-wrapper app-main-class" id="main-content">
+  <h1 class="govuk-heading-xl">Customised page template</h1>
+        </main>
+      </div>
+        <footer class="govuk-template__footer">
+  <div class="govuk-footer">
+  <div class="govuk-width-container">
+  <svg
+    focusable="false"
+    role="presentation"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 64 60"
+    height="30"
+    width="32"
+    fill="currentcolor" class="govuk-footer__crown"
+  >
+    <g>
+        <circle cx="20" cy="17.6" r="3.7"/>
+        <circle cx="10.2" cy="23.5" r="3.7"/>
+        <circle cx="3.7" cy="33.2" r="3.7"/>
+        <circle cx="31.7" cy="30.6" r="3.7"/>
+        <circle cx="43.3" cy="17.6" r="3.7"/>
+        <circle cx="53.2" cy="23.5" r="3.7"/>
+        <circle cx="59.7" cy="33.2" r="3.7"/>
+        <circle cx="31.7" cy="30.6" r="3.7"/>
+        <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"/>
+      </g>
+  </svg>
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="#">
+              Help
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="#">
+              Cookies
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="#">
+              Contact
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="#">
+              Terms and conditions
+            </a>
+          </li>
+        </ul>
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            class="govuk-footer__licence-logo"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 483.2 195.7"
+            height="17"
+            width="41"
+          >
+            <path
+              fill="currentColor"
+              d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+            />
+          </svg>
+          <span class="govuk-footer__licence-description">
+            All content is available under the
+            <a
+              class="govuk-footer__link"
+              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+              rel="license"
+            >Open Government Licence v3.0</a>, except where otherwise stated
+          </span>
+      </div>
+      <div class="govuk-footer__meta-item">
+        <a
+          class="govuk-footer__link govuk-footer__copyright-logo"
+          href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+        >
+          © Crown copyright
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+        </footer>
+  <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+  <script type="module">
+    import { initAll } from '/javascripts/govuk-frontend.min.js'
+    initAll()
+  </script>
+  </body>
+</html>
+```
+
+## Changing template content
+
+If you’re using Nunjucks, you can change the template’s content using options.
+
+How you set an option depends on whether it's a 'variable' option or a 'block' option.
+
+To set a 'variable' option, use `set` to pass in a single value or string. For example, to add a class to the `<body>` element using the `bodyClasses` option:
+
+```njk
+
+{% set bodyClasses = "EXAMPLE-CLASS" %}
+
+```
+
+By default, the template contains a [Skip link component](https://design-system.service.gov.uk/components/skip-link/), [Header component](https://design-system.service.gov.uk/components/header/) and [Footer component](https://design-system.service.gov.uk/components/footer/), all of which require 'blocks' to change.
+
+To set a 'block' option, use `block` to pass in a multiline value or HTML markup. For example, to add a block of HTML before the closing `</body>` element in the page template using the `bodyEnd` option:
+
+```njk
+
+{% block bodyEnd %}
+  <div>
+     <p>Example text</p>
+  </div>
+{% endblock %}
+
+```
+
+To change the components that are included in the page template by default, set their equivalent blocks. For example:
+
+```njk
+
+{% block govukHeader %}
+  {{ govukHeader ({
+    homepageUrl: "/custom-url"
+  }) }}
+{% endblock %}
+
+```
+
+## Template blocks and options
+
+Options are listed within the template blocks where they're used:
+
+- [`<html>` and `<body>`](#html-and-body)
+- [`<head>` and metadata](#head-and-metadata)
+- [page header](#page-header)
+- [width container and main content](#width-container-and-main-content)
+- [footer](#footer)
+- [other options](#other-options)
+
+### `<html>` and `<body>`
+
+Use options in `<html>` and `<body>` to:
+
+- [configure classes and attributes on the `<html>` element](#configure-classes-and-attributes-on-the-html-element)
+- [configure classes and attributes on the `<body>` element](#configure-classes-and-attributes-on-the-body-element)
+- [add content at the start or end of the `<body>` element](#add-content-at-the-start-or-end-of-the-body-element)
+
+**Example: "Html and body template areas**
+
+HTML:
+
+```html
+<div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: bodyStart</span>
+  </div><div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: bodyEnd</span>
+  </div>
+```
+
+### Configure classes and attributes on the `<html>` element
+
+- `htmlClasses`: Variable
+- `htmlLang`: Variable
+
+### Configure classes and attributes on the `<body>` element
+
+- `bodyClasses`: Variable
+- `bodyAttributes`: Variable
+
+### Add content at the start or end of the `<body>` element
+
+- `bodyStart`: Block
+- `bodyEnd`: Block
+
+### `<head>` and metadata
+
+Use options in `<head>` and metadata to:
+
+- [configure where your page can access GOV.UK Frontend assets](#configure-where-your-page-can-access-govuk-frontend-assets)
+- [customise icons and theme colours](#customise-icons-and-theme-colours)
+- [set the page’s title](#set-the-pages-title)
+- [add custom metadata to the `<head>` element](#add-custom-metadata-to-the-head-element) (like a `<link>` to your services stylesheet)
+
+<!-- Without this comment, the option is rendered as part of a `<li>` from the previous list -->
+
+### Configure where your page can access GOV.UK Frontend assets
+
+- `assetPath`: Variable
+- `assetUrl`: Variable
+
+### Customise icons and theme colours
+
+- `opengraphImageUrl`: Variable
+- `themeColor`: Variable
+- `headIcons`: Block
+
+### Set the page's title
+
+- `pageTitle`: Variable
+- `pageTitleLang`: Variable
+
+### Add custom metadata to the `<head>` element
+
+- `head`: Block
+
+### Page header
+
+Use options in page header to:
+
+- [replace the Skip Link rendered before the `<header>`](#replace-the-skip-link-rendered-before-the-header)
+- [add classes or attributes to the `<header>` element](#add-classes-or-attributes-to-the-header-element)
+- [add extra content at the start or end of the `<header>` element](#add-extra-content-at-the-start-or-end-of-the-header-element)
+- [add a Service Navigation component](#add-a-service-navigation-component)
+- [replace the default content from the header](#replace-the-default-content-from-the-header)
+
+**Example: "Header template areas**
+
+HTML:
+
+```html
+<div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: header</span>
+  </div><div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: headerStart</span>
+  </div><div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: headerEnd</span>
+  </div>
+```
+
+### Replace the Skip Link rendered before the `<header>`
+
+- `skipLink`: Block
+- `govukSkipLink`: Block
+
+### Add classes or attributes to the `<header>` element
+
+- `headerClasses`: Variable
+- `headerAttributes`: Variable
+
+### Add extra content at the start or end of the `<header>` element
+
+- `headerStart`: Block
+- `headerEnd`: Block
+
+### Add a Service Navigation component
+
+- `serviceName`: Variable
+- `govukServiceNavigation`: Block
+
+### Replace the default content from the header
+
+- `header`: Block
+- `govukHeader`: Block
+
+### Width container and main content
+
+The page template [renders your content](#render-your-content-inside-the-template) in a `<main>` tag, wrapped in a container limiting the content’s width.
+
+Use options in width container and main content to:
+
+- [add classes to the container limiting the content’s width](#add-classes-or-attributes-to-the-container)
+- [add content at the start or end of the container](#add-extra-content-at-the-start-or-end-of-the-container)
+- [add classes or attributes to the `<main>` element](#add-classes-or-attributes-to-the-main-element)
+- [replace the container or `<main>` element](#replace-the-container-or-main-element) with your own
+
+**Example: Main content areas**
+
+Nunjucks:
+
+```njk
+<div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: container</span>
+    <p class="govuk-body">
+    </p>
+    {{ super() }}
+  </div>
+
+  <div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: containerStart</span>
+    {{ super() }}
+    {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+    {{ govukBackLink({
+      href: "/",
+      text: "Back"
+    }) }}
+  </div>
+
+  <div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: main</span>
+    {{ super() }}
+  </div>
+
+  <div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: content</span>
+    {{ super() }}
+    <h1 class="govuk-heading-xl">GOV.UK page template</h1>
+  </div>
+
+  <div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: containerEnd</span>
+    {{ super() }}
+  </div>
+```
+
+HTML:
+
+```html
+<div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: containerStart</span>
+    <a href="/" class="govuk-back-link">Back</a>
+  </div><div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: content</span>
+    <h1 class="govuk-heading-xl">GOV.UK page template</h1>
+  </div><div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: containerEnd</span>
+  </div>
+```
+
+### Render your content inside the template
+
+- `content`: Block
+
+### Add classes or attributes to the container
+
+- `containerClasses`: Variable
+- `containerAttributes`: Variable
+
+### Add extra content at the start or end of the container
+
+- `containerStart`: Block
+- `beforeContent`: Block
+- `containerEnd`: Block
+
+### Add classes or attributes to the `<main>` element
+
+- `mainClasses`: Variable
+- `mainLang`: Variable
+- `mainAttributes`: Variable
+
+### Replace the container or `<main>` element
+
+- `container`: Block
+- `main`: Block
+
+### Footer
+
+Use options in footer to:
+
+- [add classes or attributes to the `<footer>` element](#add-classes-or-attributes-to-the-footer-element)
+- [add extra content at the start or end of the `<footer>` element](#add-extra-content-at-the-start-or-end-of-the-footer-element)
+- [replace the default content from the footer](#replace-the-default-content-from-the-footer)
+
+**Example: "Footer template areas**
+
+HTML:
+
+```html
+<div class="app-annotate-block">
+    <span class="app-annotate-block__label">block: footer</span>
+  </div>
+```
+
+### Add classes or attributes to the `<footer>` element
+
+- `footerClasses`: Variable
+- `footerAttributes`: Variable
+
+### Add extra content at the start or end of the `<footer>` element
+
+- `footerStart`: Block
+- `footerEnd`: Block
+
+### Replace the default content from the footer
+
+- `footer`: Block
+- `govukfooter`: Block
+
+### Other options
+
+### Security
+
+- `cspNonce`: Variable

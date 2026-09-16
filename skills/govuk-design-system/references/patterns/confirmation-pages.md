@@ -1,0 +1,106 @@
+# Confirmation pages
+
+Let users know they’ve completed a transaction
+
+Use this pattern to let users know they’ve completed a transaction.
+
+Include a link to the [GOV.UK feedback page](https://www.gov.uk/service-manual/service-assessments/get-feedback-page) to allow users to tell you what they think of your transaction.
+
+**Example: Confirmation pages**
+
+Nunjucks:
+
+```njk
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Application complete",
+        html: "Your reference number<br><strong>HDJ2123F</strong>"
+      }) }}
+
+      <p class="govuk-body">We have sent you a confirmation email.</p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p class="govuk-body">
+        We’ve sent your application to Hackney Electoral Register Office.
+      </p>
+      <p class="govuk-body">
+        They will contact you either to confirm your registration, or to ask for more information.
+      </p>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+    </div>
+  </div>
+```
+
+HTML:
+
+```html
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-panel govuk-panel--confirmation">
+  <h1 class="govuk-panel__title">
+    Application complete
+  </h1>
+  <div class="govuk-panel__body">
+    Your reference number<br><strong>HDJ2123F</strong>
+  </div>
+</div>
+      <p class="govuk-body">We have sent you a confirmation email.</p>
+      <h2 class="govuk-heading-m">What happens next</h2>
+      <p class="govuk-body">
+        We’ve sent your application to Hackney Electoral Register Office.
+      </p>
+      <p class="govuk-body">
+        They will contact you either to confirm your registration, or to ask for more information.
+      </p>
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+    </div>
+  </div>
+```
+
+## When to use this pattern
+
+You should use a confirmation page at the end of a transaction.
+
+## How it works
+
+Confirmation pages reassure users that they have completed a transaction and helps them understand what to expect next.
+
+Your confirmation page must include:
+
+- a reference number, if there is one
+- details of what happens next and when
+- contact details for the service
+- links to information or services that users are likely to need next
+- a link to your [feedback page](https://www.gov.uk/service-manual/service-assessments/get-feedback-page)
+- a way for users to save a record of the transaction, for example, as a PDF
+
+If you choose to add links, buttons or other interactive elements in the green confirmation panel, they will not be accessible. You'll need to make changes to the panel or focus state style to make them accessible and meet a minimum contrast ratio of 3:1.
+
+### Help users who bookmark the page
+
+Some users will bookmark the confirmation page as a form of receipt. You should allow them to return to the page, whenever possible.
+
+If you cannot, make sure your service responds in a helpful way when users return using a bookmarked link. For example, if people use your service to make an application you could provide links to information on:
+
+- tracking an application
+- starting a new application
+- what to do or who to contact if they have a problem with their application
+
+## Research on this pattern
+
+[Read a blog post about users who bookmark confirmation pages](https://designnotes.blog.gov.uk/2015/12/10/do-users-return-to-your-service-after-finishing/).
+
+### Known gaps
+
+Research is needed on the best way to confirm transactions that are part of a wider user task. For example, where you might need to emphasise next steps more than completion of that particular transaction.
