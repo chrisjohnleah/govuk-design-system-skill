@@ -1,5 +1,7 @@
 # GOV.UK Design System skill
 
+[![skills.sh](https://skills.sh/b/chrisjohnleah/govuk-design-system-skill)](https://skills.sh/chrisjohnleah/govuk-design-system-skill)
+
 An [agent skill](https://agentskills.io) that gives Claude Code, Codex, Cursor and any other
 skills-compatible agent the whole GOV.UK Design System, offline, at a pinned version:
 
