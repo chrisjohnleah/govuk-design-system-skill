@@ -185,7 +185,7 @@ const template = env.render('template.njk', { assetPath: '/assets', pageTitle: '
 writeFileSync(join(skillDir, 'assets', 'page-template.html'), template.replace(/^[ \t]+$/gm, '').replace(/\n{3,}/g, '\n\n').trim() + '\n')
 
 // ---------- 6. index ----------
-let idx = `# Reference index\n\nGenerated from govuk-frontend ${frontendVersion}, govuk-design-system@${dsCommit}, govuk-frontend-docs@${docsCommit} on ${new Date().toISOString().slice(0, 10)}.\nRead only the files you need. One line per page: what it is and when it applies.\n`
+let idx = `# Reference index\n\nGenerated from govuk-frontend ${frontendVersion}, govuk-design-system@${dsCommit}, govuk-frontend-docs@${docsCommit}.\nRead only the files you need. One line per page: what it is and when it applies.\n`
 const sections = [
   ['frontend', 'Frontend technical docs (install, Sass, JavaScript, no-branding)', 'references/frontend'],
   ['get-started', 'Get started (prototyping, production, headings, extending components)', 'references/get-started'],

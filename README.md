@@ -35,8 +35,12 @@ service but for our charity".
 
 ## Keeping it current
 
+Every Monday a GitHub Action regenerates the references from the latest govuk-frontend release
+and the current Design System guidance. If anything changed it commits, tags the govuk-frontend
+version and publishes a release. Code ages; this repo does not wait for someone to notice.
+
 `skills/govuk-design-system/VERSION` records the govuk-frontend version and the upstream commits
-the references were generated from. To regenerate against the latest upstream:
+the references were generated from. To regenerate by hand:
 
 ```bash
 node skills/govuk-design-system/scripts/build-references.mjs

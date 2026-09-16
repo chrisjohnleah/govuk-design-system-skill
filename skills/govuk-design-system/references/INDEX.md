@@ -1,6 +1,6 @@
 # Reference index
 
-Generated from govuk-frontend 6.5.1, govuk-design-system@177b209, govuk-frontend-docs@9eb98dd on 2026-09-16.
+Generated from govuk-frontend 6.5.1, govuk-design-system@177b209, govuk-frontend-docs@9eb98dd.
 Read only the files you need. One line per page: what it is and when it applies.
 
 ## Frontend technical docs (install, Sass, JavaScript, no-branding)

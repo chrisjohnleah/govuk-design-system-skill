@@ -1,0 +1,58 @@
+name: Track upstream
+
+# Every Monday: regenerate the references from the latest govuk-frontend release and the
+# current design-system and frontend-docs repos. If anything changed, commit it, tag the
+# govuk-frontend version and publish a release with the packaged skill.
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Regenerate references
+        run: node skills/govuk-design-system/scripts/build-references.mjs
+
+      - name: Detect changes
+        id: diff
+        run: |
+          git add -A skills
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "version=$(awk '/^govuk-frontend/ {print $2}' skills/govuk-design-system/VERSION)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Regenerate references from govuk-frontend ${{ steps.diff.outputs.version }}"
+          git push
+
+      - name: Package and release
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          V="${{ steps.diff.outputs.version }}"
+          (cd skills && zip -qr ../govuk-design-system.skill govuk-design-system -x '*/.build/*')
+          if gh release view "v$V" >/dev/null 2>&1; then
+            gh release upload "v$V" govuk-design-system.skill --clobber
+          else
+            gh release create "v$V" govuk-design-system.skill --title "v$V" \
+              --notes "References regenerated from govuk-frontend $V and the current GOV.UK Design System guidance. Install: npx skills add chrisjohnleah/govuk-design-system-skill"
+          fi
