@@ -18,8 +18,9 @@ node, git, npm; fetches upstream, takes about a minute).
 
 1. **Decide the branding mode first** (section below). It changes the header, font, colours,
    icons and `theme-color`, and it is the thing agents get wrong most.
-2. **Open `references/INDEX.md`**, then read only the component, pattern and style files the task
-   needs. Every component file has: guidance, when to use, when not to use, the Nunjucks macro
+2. **Pick with `references/CHOOSING.md`** (every component's and pattern's "when to use" and
+   "when not to use" in one file), then **open `references/INDEX.md`** and read only the
+   component, pattern and style files the task needs. Every component file has: guidance, when to use, when not to use, the Nunjucks macro
    options table, and the exact HTML each example renders to. Large files (footer, summary-list,
    radios) are best grepped for a heading or class name.
 3. **Copy markup from the references, do not write it from memory.** Class names, `data-module`

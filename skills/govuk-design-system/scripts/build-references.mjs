@@ -200,6 +200,27 @@ for (const [key, title, path] of sections) {
   }
 }
 writeFileSync(join(refs, 'INDEX.md'), idx)
+
+// ---------- 7. CHOOSING.md: every "when to use" / "when not to use" in one file ----------
+const section = (md, heading) => {
+  const m = md.match(new RegExp(`^## ${heading}[^\\n]*\\n([\\s\\S]*?)(?=^## |(?![\\s\\S]))`, 'm'))
+  if (!m) return ''
+  // drop inlined examples and blank runs; keep the prose
+  return m[1].replace(/\*\*Example:[\s\S]*?```\n\n?/g, '').replace(/```[\s\S]*?```/g, '').replace(/\n{2,}/g, '\n').trim()
+}
+let choosing = `# Choosing components and patterns\n\nEvery "when to use" and "when not to use" from the Design System in one place. Scan this to pick, then open the page in \`references/\` for the markup.\n`
+for (const [group, label] of [['components', 'Components'], ['patterns', 'Patterns']]) {
+  choosing += `\n## ${label}\n`
+  for (const e of index[group].sort((a, b) => a.name.localeCompare(b.name))) {
+    const md = readFileSync(join(refs, group, `${e.name}.md`), 'utf8')
+    const use = section(md, 'When to use')
+    const not = section(md, 'When not to use')
+    choosing += `\n### ${e.title}${e.status ? ` (${e.status})` : ''}\n\n\`references/${group}/${e.name}.md\`${e.description ? ` — ${e.description}` : ''}\n`
+    if (use) choosing += `\n**Use when:** ${use}\n`
+    if (not) choosing += `\n**Do not use when:** ${not}\n`
+  }
+}
+writeFileSync(join(refs, 'CHOOSING.md'), choosing)
 writeFileSync(join(skillDir, 'VERSION'), `govuk-frontend ${frontendVersion}\ngovuk-design-system ${dsCommit}\ngovuk-frontend-docs ${docsCommit}\n`)
 
 console.log(`govuk-frontend ${frontendVersion}: ${Object.entries(index).map(([k, v]) => `${v.length} ${k}`).join(', ')}`)
